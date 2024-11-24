@@ -23,12 +23,19 @@ Modify your `flake.nix` file to include a reference to this NUR:
   outputs = { self, nixpkgs, flake-utils, nsv }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {inherit system; };
-      in {
-        devShells.default = pkgs.mkShell {
-          buildInputs = [ nsv.packages.${system}.nsv ];
+        pkgs = import nixpkgs {
+          inherit system;
         };
-      });
+      in
+      with pkgs;
+      {
+        devShells.default = mkShell {
+          buildInputs = [
+            nsv.packages.${system}.nsv
+          ];
+        };
+      }
+    );
 }
 ```
 

@@ -9,24 +9,24 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "sha256-g9IBuXYG98JCDcnM6Rq92ULqAWNIUFAJHqAwRAzdZ2I=";
-    armv7l-linux = "sha256-mcRyBQmGI5WcUInGYtteq375zdT4dvzuy9CJr+JMLt8=";
-    aarch64-linux = "sha256-6+g+a8bMwF5ML47OPN8QEAn1c+9fGqD/O/Fxv5dNo88=";
-    x86_64-darwin = "sha256-BUh4T4M12Rz0Z30VkhHCNJcUwiQdQ5W0SMznpAk3S4U=";
-    aarch64-darwin = "sha256-84Diq8sXZ0fi5BnVuecHZs8BeK18QIKTzA76KqvXtlc=";
+    x86_64-linux = "1pvbl2ykmnsy2iwp5y656hd7gc4jr3hxrf3njcgb63zpqs71zi83";
+    armv7l-linux = "1jn91lisr80n8pjf9y0ckzw3ivq4gqga7z394a4j0yzdrqsi6si8";
+    aarch64-linux = "1mfs1ccm0njkr3cfripjd4k2l5bzk3g7z1sh7a9kw8cdshswkifm";
+    x86_64-darwin = "0jh49x3sj75bbn16qv085d44j7ngdqjs7q2bi2x2xvnqsbawkhmv";
+    aarch64-darwin = "1i77mwd49xwqflx7rnckm7sbcwn8jr9sf6mq9aqc628pfmzn31h8";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.10.2/nsv_0.10.2_linux_x86_64.tar.gz";
-    armv7l-linux = "https://github.com/purpleclay/nsv/releases/download/v0.10.2/nsv_0.10.2_linux_armv7.tar.gz";
-    aarch64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.10.2/nsv_0.10.2_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.10.2/nsv_0.10.2_darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.10.2/nsv_0.10.2_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.0/nsv_0.11.0_linux_x86_64.tar.gz";
+    armv7l-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.0/nsv_0.11.0_linux_armv7.tar.gz";
+    aarch64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.0/nsv_0.11.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.11.0/nsv_0.11.0_darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.11.0/nsv_0.11.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "nsv";
-  version = "0.10.2";
+  version = "0.11.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -39,6 +39,7 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp -vr ./nsv $out/bin/nsv
+    installManPage ./manpages/nsv.1.gz
   '';
   postInstall = ''
     installShellCompletion --cmd nsv \

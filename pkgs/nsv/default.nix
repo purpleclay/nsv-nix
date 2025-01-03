@@ -9,24 +9,24 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "0ldm3slc4nk4brks0rf0c9zhac7g5cg3r0rhgp4yxby4w0sv70zh";
-    armv7l-linux = "1p8k5zagm5riqnmwwdh3c7xc7mzn5yvh1qwbx8izacssi5iiv654";
-    aarch64-linux = "11197qrcs800wa733qxdxmqig2gxhmb2jcqvckp3s2ydragzvz81";
-    x86_64-darwin = "08gjddf2naslgb9x6q4r3cdb8gk79grbff82wb62rjvxa0n65ki8";
-    aarch64-darwin = "0r8b36q8k5qj1ygp06bknpm3x7djjnq5qv1h26b3r05zizf8mfi8";
+    x86_64-linux = "15x04a87szcbs0ck2xpmwblyng72ghvakaxmdm1dai2jk0ij01gj";
+    armv7l-linux = "08shzv5cyna2c838f8n6x0ncb9kh429d5xxqcyzp6qmhkzdrw33l";
+    aarch64-linux = "1j8xv6qfms1j4631h4yig4c15nkiakcx3cf41vwj3jyyydkdd54v";
+    x86_64-darwin = "0n4lcfsijznjrqkz33qwhbxv4ydiz3jdw3qy3y0f5w8gi6pqkfn8";
+    aarch64-darwin = "0ivxmyfibjxcv08n47y369gfa7gah999b4xvy3dx7fa6wncjdv2n";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.1/nsv_0.11.1_linux_x86_64.tar.gz";
-    armv7l-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.1/nsv_0.11.1_linux_armv7.tar.gz";
-    aarch64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.11.1/nsv_0.11.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.11.1/nsv_0.11.1_darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.11.1/nsv_0.11.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.12.0/nsv_0.12.0_linux_x86_64.tar.gz";
+    armv7l-linux = "https://github.com/purpleclay/nsv/releases/download/v0.12.0/nsv_0.12.0_linux_armv7.tar.gz";
+    aarch64-linux = "https://github.com/purpleclay/nsv/releases/download/v0.12.0/nsv_0.12.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.12.0/nsv_0.12.0_darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/purpleclay/nsv/releases/download/v0.12.0/nsv_0.12.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "nsv";
-  version = "0.11.1";
+  version = "0.12.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
